@@ -1,17 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [count, setCount] = useState(0);
+  const [error, setError] = React.useState(false);
   return (
-    <div className="App">
-      <h1>learn react</h1>
-      <div data-test='component-app'>
-        <h3 data-test='counter-display'>Counter: 0</h3>
-        <button data-test='button'>Click ME!</button>
-      </div>
-    </div>
-  );
+		<div>
+			<h1 data-test='counter-display'>learn react</h1>
+			<h1 data-test='component-app'>
+				counter: <span data-test='count'>{count}</span>
+			</h1>
+			<div
+				data-test='error-message'
+				className={`error ${error ? '' : 'hidden'}`}>
+				The counter cannot go below 0
+			</div>
+			<button
+				data-test='button'
+				onClick={() => {
+					if (error) {
+						setError(false);
+					}
+					setCount(count + 1);
+				}}>
+				Click ME!
+			</button>
+
+			<button
+				data-test='decrement'
+				onClick={() => setCount(count > 0 ? count - 1 : setError(true))}>
+				-
+			</button>
+		</div>
+	);
 }
 
 export default App;
