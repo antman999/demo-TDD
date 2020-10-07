@@ -5,7 +5,11 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-   <h1>learn react</h1>
+      <h1>learn react</h1>
+      <div data-test='component-app'>
+        <h3 data-test='counter-display'>Counter: 0</h3>
+        <button data-test='button'>Click ME!</button>
+      </div>
     </div>
   );
 }
